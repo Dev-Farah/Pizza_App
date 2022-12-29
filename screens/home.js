@@ -266,6 +266,7 @@ function Home({navigation, route}) {
         {/* <View style={[styles.flexRow, styles.flexCenter, styles.flexWrap]}>
             <CuButton label='Add to menu' touchableStyle={{ width: '45%' }} moreStyles={{ paddingHorizontal: 0, padding: 10, marginRight: 8 }} onPress={() => navigation.navigate('Add to menu')} />
             <CuButton label='Orders' touchableStyle={{ width: '30%' }} moreStyles={{ paddingHorizontal: 0, padding: 10, marginRight: 8 }} onPress={() => navigation.navigate('Orders')} />
+            <CuButton label='Track your order' touchableStyle={{ width: '50%' }} moreStyles={{ paddingHorizontal: 0, padding: 10, marginRight: 8 }} onPress={() => navigation.navigate('Map')} />
         </View> */}
 
 
