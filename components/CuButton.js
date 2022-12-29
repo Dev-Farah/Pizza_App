@@ -20,10 +20,5 @@ function CuButton(props) {
     )
 }
 
-{/* <Pressable
-    style={({ pressed }) => [{ backgroundColor: 'green' }]}
->
-    <Text>{label}</Text>
-</Pressable> */}
 
 export default CuButton;

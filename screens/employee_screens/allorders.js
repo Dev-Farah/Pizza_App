@@ -16,6 +16,7 @@ function Orders({ navigation, route }) {
         getData(`orders`)
             .then((res) => {
                 setList([...res]);
+                console.log([...res]);
             })
             .catch((err) => {
                 setList(err);
@@ -26,7 +27,7 @@ function Orders({ navigation, route }) {
 
 
     useEffect(() => {
-        // getAllOrders();
+        getAllOrders();
     }, [])
 
 
@@ -51,10 +52,10 @@ function Orders({ navigation, route }) {
                                     <Text style={[styles.fs, {marginVertical: 2}]}>{e.dropPoint}</Text>
 
                                     <Text style={[styles.fs4, styles.textBlack, {marginVertical: 10}]}>Order Details:</Text>
-                                    <Text style={[styles.fs, {marginVertical: 2}]}>{e.orderDetails.typeOfOrder}</Text>
-                                    <Text style={[styles.fs, {marginVertical: 2}]}>{e.orderDetails.noOfSeats}</Text>
-                                    <Text style={[styles.fs, {marginVertical: 2}]}>{e.orderDetails.time}</Text>
-                                    <Text style={[styles.fs, {marginVertical: 2}]}>{e.orderDetails.startingDestination} to {e.orderDetails.finalDestination}</Text>
+                                    <Text style={[styles.fs, {marginVertical: 2}]}>{e.orderDetails.title}</Text>
+                                    <Text style={[styles.fs, {marginVertical: 2}]}>{e.orderDetails.price}</Text>
+                                    {/* <Text style={[styles.fs, {marginVertical: 2}]}>{e.orderDetails.}</Text>
+                                    <Text style={[styles.fs, {marginVertical: 2}]}>{e.orderDetails.startingDestination} to {e.orderDetails.finalDestination}</Text> */}
                                 </TouchableOpacity>
                             )) : null}
                     </View>

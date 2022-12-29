@@ -62,7 +62,7 @@ const styling = {
   bgWhite: {
     backgroundColor: _white,
   },
-  bgPrimary: {
+  bgDark: {
     backgroundColor: _dark,
   },
   bgSecondary: {
@@ -790,10 +790,10 @@ const styling = {
     justifyContent: "space-around",
   },
   rounded: {
-    borderRadius: 12,
+    borderRadius: 15,
   },
   roundedPill: {
-    borderRadius: 500,
+    borderRadius: 50,
   },
   label: {
     fontSize: 18,
@@ -801,14 +801,12 @@ const styling = {
     paddingLeft: 10,
     color: _dark,
   },
-  chips: {
-    padding: 7,
-    paddingHorizontal: 15,
+  chip:{
+    padding: 8,
+    paddingHorizontal: 10,
     backgroundColor: _light,
     borderRadius: 30,
-    margin: 2,
-    borderWidth: 1,
-    borderColor: _dark,
+    margin: 5,
   },
   paper: {
     padding: 10,
@@ -837,6 +835,7 @@ const styling = {
   _light: _light,
   _medium: _medium,
   _dark: _dark,
+  _themeLight: _themeLight,
   _secondary: _secondary,
   _info: _info,
   _link: _link,

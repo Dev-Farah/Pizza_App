@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Alert, ScrollView, Text, ToastAndroid, View } from 'react-native';
 import CuButton from '../components/CuButton';
+import CuChip from '../components/CuChip';
 import CuTextInput from '../components/CuTextInput';
 import { sendData } from '../config/firebasemethods';
 import styles from '../styles/global';
@@ -8,18 +9,28 @@ import styles from '../styles/global';
 
 function OrderNow({ navigation, route }) {
     
-    const vehicleObj = route.params;
-    // console.log(vehicleObj);
+    let orderObj = route.params;
     const [object, setObject] = useState({});
 
-    let addOrder = () => {
-        object.vehicleDetails = vehicleObj;
+    const setValues = () => {
+        if(object.orderDetails === undefined) {
+            object.orderDetails = orderObj;
+        };
         console.log(object);
-        // console.log(vehicleObj);
+    }
+
+    
+    let getCurrLoc = () => {
+        navigation.navigate('Current Location', object)
+    }
+    
+    let addOrder = () => {
+        // console.log(object);
         sendData(`orders/`, object)
         .then((res) => {
             console.log(res);
-            ToastAndroid.show('Booking Created Successfully', ToastAndroid.SHORT)
+            ToastAndroid.show('Order Created Successfully', ToastAndroid.SHORT);
+            navigation.navigate('Home')
             setObject({});
         })
         .catch((err) => {
@@ -28,6 +39,11 @@ function OrderNow({ navigation, route }) {
         })
     }
 
+    useEffect(() => {
+        setValues();
+    }, [])
+
+    
     return (
         <View style={[styles.h100, styles.w100, styles.p1, styles.alignItemsCenter]}>
             <View>
@@ -41,13 +57,23 @@ function OrderNow({ navigation, route }) {
                     <CuTextInput label='Contact' onChangeText={e => setObject({...object, contact: e})} keyboardType='numeric' />
                     <CuTextInput label='CNIC' onChangeText={e => setObject({...object, cnic: e})} keyboardType='numeric' />
                     <CuTextInput label='Address' onChangeText={e => setObject({...object, address: e})} />
-                    <CuTextInput label='Delivery Location' onChangeText={e => setObject({...object, dropPoint: e})} />
+                    {/* <CuTextInput label='Delivery Location' onChangeText={e => setObject({...object, dropPoint: e})} /> */}
+                    
+                    {object.dropPoint && Object.keys(object.dropPoint).length > 0
+                    ? <Text style={[ styles.fs5, styles.textBold, styles.mx1, {marginTop: 8 }]}>Location Added</Text>
+                    : <Text style={[ styles.fs5, styles.textBold, styles.mx1, {marginTop: 8 }]}>Add Delivery Location</Text>}
+                    
+                    <CuChip label={object.dropPoint && Object.keys(object.dropPoint).length > 0 ? 'Change Location' : 'Get Location'}
+                    // touchableStyle={{width: 175}} iconName='pin-drop'
+                    touchableStyle={{width: 155, padding: 13}}
+                    onPress={() => getCurrLoc()} />
                 </View>
+
                 <View style={[styles.mb1, styles.py2, styles.rounded, { backgroundColor: '#d8d8d8', padding: 15 }]}>
-                    <Text style={[styles.fs3, styles.textBlack, styles.mb1]}>Vehicle Details</Text>
-                    <CuTextInput label='Title' value={vehicleObj.title} disabled={true} />
-                    <CuTextInput label='Price' value={`Rs. ${vehicleObj.price}`} disabled={true} />
-                    <CuTextInput label='Classification' value={vehicleObj.classification} disabled={true} />
+                    <Text style={[styles.fs3, styles.textBlack, styles.mb1]}>Order Details</Text>
+                    <CuTextInput label='Title' value={orderObj.title || object.orderDetails.title } disabled={true} />
+                    <CuTextInput label='Price' value={`Rs. ${orderObj.price || object.orderDetails.price }`} disabled={true} />
+                    <CuTextInput label='Classification' value={orderObj.classification || object.orderDetails.classification } disabled={true} />
                 </View>
 
             </ScrollView>

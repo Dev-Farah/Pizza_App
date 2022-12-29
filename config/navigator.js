@@ -10,6 +10,7 @@ import Orders from '../screens/employee_screens/allorders';
 import OrderNow from '../screens/ordernow';
 import ItemDetails from '../screens/itemdetails';
 import Map from '../screens/map';
+import CurrentLocation from '../screens/currentlocation';
 
 
 const Stack = createNativeStackNavigator();
@@ -19,13 +20,14 @@ function AppNavigator() {
         <NavigationContainer>
             <Stack.Navigator>
                 <Stack.Screen options={{ headerShown: false }} name="Splash" component={Splash} />
-                <Stack.Screen name="Sign Up" component={SignUp} />
-                <Stack.Screen name="Login" component={Login} />
-                <Stack.Screen name="Home" component={Home} />
+                <Stack.Screen options={{ headerShown: false }} name="Sign Up" component={SignUp} />
+                <Stack.Screen options={{ headerShown: false }} name="Login" component={Login} />
+                <Stack.Screen options={{ headerBackVisible: false, headerShown: false }} name="Home" component={Home} />
                 <Stack.Screen name="Map" component={Map} />
                 <Stack.Screen name="Add to menu" component={AddToMenu} />
                 <Stack.Screen name="Orders" component={Orders} />
                 <Stack.Screen name="Order Now" component={OrderNow} />
+                <Stack.Screen name="Current Location" component={CurrentLocation} />
                 <Stack.Screen name="Item Details" component={ItemDetails} />
             </Stack.Navigator>
         </NavigationContainer>

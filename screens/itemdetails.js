@@ -6,7 +6,7 @@ import styles from '../styles/global';
 function ItemDetails({ navigation, route }) {
 
     let itemDetails = route.params;
-    // console.log(route.params);
+    console.log(route.params);
     let [reviewList, setReviewList] = useState([
         {
             name: 'Alex',
@@ -36,15 +36,15 @@ function ItemDetails({ navigation, route }) {
 
     return (
         <>
-            <View style={[styles.h100, styles.p2, styles.bgWhite]}>
-                    <Image source={{ uri: itemDetails.image }} style={[styles.mb2, { width: 300, height: 300, alignSelf: 'center', resizeMode: 'contain' }]} />
+            <View style={[styles.h100, styles.px2, styles.bgWhite, {paddingTop: 15}]}>
+                    <Image source={{ uri: itemDetails.image }} style={[ { width: 300, height: 300, resizeMode: 'contain', alignSelf: 'center', marginBottom: 15 }]} />
 
             <ScrollView style={{ height: 300 }}>
 
                 <View style={[styles.pb2]}>
                     <Text style={[styles.fs1, styles.mt1, styles.textBlack, styles.textBold]}>{itemDetails.title}</Text>
                     <Text style={[styles.fs3, styles.mt1, styles.textBlack, styles.textBold]} >Rs. {itemDetails.price}</Text>
-                    <Text style={[styles.fs5, styles.textBlack ]} >Classification: {itemDetails.classification}</Text>
+                    <Text style={[styles.fs5, styles.textBlack, {marginVertical: 5} ]} >Classification: {itemDetails.classification}</Text>
                     <Text style={[styles.fs5, styles.textBlack ]} >Description: {itemDetails.description}</Text> 
                 </View>
 

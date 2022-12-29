@@ -82,7 +82,7 @@ import MapViewDirections from 'react-native-maps-directions';
 import pizza from '../assets/pizza.jpg';
 
 function LiveLocation() {
-  const GOOGLE_MAPS_APIKEY = 'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX';
+  const GOOGLE_MAPS_APIKEY = 'AIzaSyBoaOrCtwHVoGsXz3_56m-7Me6qtKPYJoo';
 
   const mapRef = useRef();
   const [coordinates, setCoordinates] = useState({
