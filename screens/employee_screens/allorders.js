@@ -35,27 +35,26 @@ function Orders({ navigation, route }) {
         <ScrollView>
             <View style={[styles.p2, styles.alignItemsCenter]}>
                 <Text style={[styles.textBlack, styles.fs1]}>Orders</Text>
-            
+                <Text style={[styles.textBlack, styles.fs5, styles.mt2, {alignSelf: 'flex-start'}]}>Total Orders: {list.length}</Text>
             
                 <View 
                     style={[ styles.w100 ]}>
                         {list && list.length > 0
                             ? list.map((e, i) => (
-                                <TouchableOpacity key={i} onPress={() => {}} style={[styles.rounded, {margin: 7, padding: 15, backgroundColor: '#d8d8d880'}]}>
+                                <TouchableOpacity key={i} onPress={() => {}} style={[styles.rounded, styles.shadow2, styles.my1, { padding: 15, backgroundColor: '#fff'}]}>
                                     
-                                    <Text style={[styles.fs4, styles.textBlack, {marginVertical: 2}]}>User Details:</Text>
-                                    <Text style={[styles.textBlack, styles.fs2, {marginVertical: 2}]}>{e.userName}</Text>
-                                    <Text style={[styles.fs, {marginVertical: 2}]}>{e.contact}</Text>
-                                    <Text style={[styles.fs, {marginVertical: 2}]}>{e.cnic}</Text>
-                                    <Text style={[styles.fs, {marginVertical: 2}]}>{e.address}</Text>
-                                    <Text style={[styles.fs, {marginVertical: 2}]}>{e.pickUpPoint}</Text>
-                                    <Text style={[styles.fs, {marginVertical: 2}]}>{e.dropPoint}</Text>
+                                    <Text style={[styles.fs2, styles.textBlack, {marginVertical: 2}]}>User Details:</Text>
+                                    <Text style={[styles.fs5, {color: '#5a5a5a', marginVertical: 2}]}>Name: {e.userName}</Text>
+                                    <Text style={[styles.fs5, {color: '#5a5a5a', marginVertical: 2}]}>Contact: {e.contact}</Text>
+                                    <Text style={[styles.fs5, {color: '#5a5a5a', marginVertical: 2}]}>CNIC: {e.cnic}</Text>
+                                    <Text style={[styles.fs5, {color: '#5a5a5a', marginVertical: 2}]}>Address: {e.address}</Text>
+                                    <Text style={[styles.fs5, {color: '#5a5a5a', marginVertical: 2}]}>Latitude: {e.dropPoint.latitude}</Text>
+                                    <Text style={[styles.fs5, {color: '#5a5a5a', marginVertical: 2}]}>Longitude: {e.dropPoint.longitude}</Text>
 
-                                    <Text style={[styles.fs4, styles.textBlack, {marginVertical: 10}]}>Order Details:</Text>
-                                    <Text style={[styles.fs, {marginVertical: 2}]}>{e.orderDetails.title}</Text>
-                                    <Text style={[styles.fs, {marginVertical: 2}]}>{e.orderDetails.price}</Text>
-                                    {/* <Text style={[styles.fs, {marginVertical: 2}]}>{e.orderDetails.}</Text>
-                                    <Text style={[styles.fs, {marginVertical: 2}]}>{e.orderDetails.startingDestination} to {e.orderDetails.finalDestination}</Text> */}
+                                    <Text style={[styles.fs2, styles.textBlack, styles.mt1]}>Order Details:</Text>
+                                    <Text style={[styles.fs5, {color: '#5a5a5a', marginVertical: 2}]}>Title: {e.orderDetails.title}</Text>
+                                    <Text style={[styles.fs5, {color: '#5a5a5a', marginVertical: 2}]}>Price: {e.orderDetails.price} Rs.</Text>
+                                    <Text style={[styles.fs5, {color: '#5a5a5a', marginVertical: 2}]}>Classification: {e.orderDetails.classification}</Text>
                                 </TouchableOpacity>
                             )) : null}
                     </View>
